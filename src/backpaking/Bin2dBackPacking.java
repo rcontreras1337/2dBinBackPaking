@@ -1,5 +1,8 @@
 package backpaking;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class Bin2dBackPacking {
     // Clase para representar un objeto con dimensiones x e y
     public static class ObjectDimensions {
@@ -68,14 +71,36 @@ public class Bin2dBackPacking {
         return maxPanels;
     }
 
-    // Método para imprimir el área con los objetos posicionados
-    public static void printSpace(int[][] space) {
-        System.out.println("\nEspacio del techo con paneles:");
-        for (int i = 0; i < space.length; i++) {
-            for (int j = 0; j < space[0].length; j++) {
-                System.out.print(space[i][j] == 0 ? ". " : space[i][j] + " ");
+    // Método para mostrar la representación gráfica en una ventana
+    public static void displaySpace(int[][] space, int cellSize) {
+        JFrame frame = new JFrame("Representación de Paneles Solares");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(space[0].length * cellSize + 50, space.length * cellSize + 50);
+
+        JPanel panel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                for (int i = 0; i < space.length; i++) {
+                    for (int j = 0; j < space[0].length; j++) {
+                        if (space[i][j] != 0) {
+                            g.setColor(Color.CYAN);
+                            g.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                            g.setColor(Color.BLACK);
+                            g.drawRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                            g.drawString(String.valueOf(space[i][j]), j * cellSize + cellSize / 4, i * cellSize + cellSize / 2);
+                        } else {
+                            g.setColor(Color.LIGHT_GRAY);
+                            g.drawRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                        }
+                    }
+                }
             }
-            System.out.println();
-        }
+        };
+
+        panel.setPreferredSize(new Dimension(space[0].length * cellSize, space.length * cellSize));
+        frame.add(panel);
+        frame.pack();
+        frame.setVisible(true);
     }
 }

@@ -2,8 +2,7 @@ import backpaking.Bin2dBackPacking;
 
 import java.util.Scanner;
 
-import static backpaking.Bin2dBackPacking.calculateMaxObjects;
-import static backpaking.Bin2dBackPacking.printSpace;
+import static backpaking.Bin2dBackPacking.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -26,8 +25,8 @@ public class Main {
         int maxPanels = calculateMaxObjects(areaWidth, areaHeight, panelSolar, space);
         System.out.println("El número máximo de paneles solares que caben en el techo es: " + maxPanels);
 
-        // Imprimir la representación gráfica
-        printSpace(space);
+        // Mostrar la representación gráfica
+        displaySpace(space, 50);
 
         scanner.close();
     }
