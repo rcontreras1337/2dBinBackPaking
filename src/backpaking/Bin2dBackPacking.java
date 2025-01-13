@@ -129,6 +129,7 @@ public class Bin2dBackPacking {
         JFrame frame = new JFrame("Representación de Paneles Solares");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(space[0].length * cellSize + 100, space.length * cellSize + 100);
+        frame.setAlwaysOnTop(true);
 
         JPanel panel = new JPanel() {
             @Override

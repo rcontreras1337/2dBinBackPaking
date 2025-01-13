@@ -32,7 +32,9 @@ public class Main {
             displaySpace(space, 50);
 
             // Preguntar al usuario si desea continuar
-            System.out.println("¿Desea realizar otro cálculo? (1: Sí, 2: No): ");
+            System.out.println("¿Desea realizar otro cálculo?");
+            System.out.println("1: Sí");
+            System.out.println("2: No");
             int opcion = scanner.nextInt();
             if (opcion != 1) {
                 continuar = false;
