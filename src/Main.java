@@ -18,8 +18,15 @@ public class Main {
             System.out.print("Ingrese el alto del techo: ");
             int areaHeight = scanner.nextInt();
 
+            // Solicitar dimensiones panel Solar
+            System.out.print("Ingrese el ancho del panel solar: ");
+            int panelSolarWidth = scanner.nextInt();
+
+            System.out.print("Ingrese el alto del panel solar: ");
+            int panelSolarHeight = scanner.nextInt();
+
             // Dimensiones de un panel solar
-            ObjectDimensions panelSolar = new ObjectDimensions(1, 1, 2);
+            ObjectDimensions panelSolar = new ObjectDimensions(1, panelSolarWidth, panelSolarHeight);
 
             // Crear una matriz para representar el espacio
             int[][] space = new int[areaHeight][areaWidth];
