@@ -8,25 +8,36 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Solicitar dimensiones del techo
-        System.out.print("Ingrese el ancho del techo: ");
-        int areaWidth = scanner.nextInt();
+        boolean continuar = true;
 
-        System.out.print("Ingrese el alto del techo: ");
-        int areaHeight = scanner.nextInt();
+        while (continuar) {
+            // Solicitar dimensiones del techo
+            System.out.print("Ingrese el ancho del techo: ");
+            int areaWidth = scanner.nextInt();
 
-        // Dimensiones de un panel solar
-        Bin2dBackPacking.ObjectDimensions panelSolar = new Bin2dBackPacking.ObjectDimensions(1, 1, 2);
+            System.out.print("Ingrese el alto del techo: ");
+            int areaHeight = scanner.nextInt();
 
-        // Crear una matriz para representar el espacio
-        int[][] space = new int[areaHeight][areaWidth];
+            // Dimensiones de un panel solar
+            ObjectDimensions panelSolar = new ObjectDimensions(1, 1, 2);
 
-        // Calcular el número máximo de paneles solares que caben
-        int maxPanels = calculateMaxObjects(areaWidth, areaHeight, panelSolar, space);
-        System.out.println("El número máximo de paneles solares que caben en el techo es: " + maxPanels);
+            // Crear una matriz para representar el espacio
+            int[][] space = new int[areaHeight][areaWidth];
 
-        // Mostrar la representación gráfica
-        displaySpace(space, 50);
+            // Calcular el número máximo de paneles solares que caben
+            int maxPanels = calculateMaxObjects(areaWidth, areaHeight, panelSolar, space);
+            System.out.println("El número máximo de paneles solares que caben en el techo es: " + maxPanels);
+
+            // Mostrar la representación gráfica
+            displaySpace(space, 50);
+
+            // Preguntar al usuario si desea continuar
+            System.out.println("¿Desea realizar otro cálculo? (1: Sí, 2: No): ");
+            int opcion = scanner.nextInt();
+            if (opcion != 1) {
+                continuar = false;
+            }
+        }
 
         scanner.close();
     }
