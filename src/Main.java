@@ -3,10 +3,10 @@ import backpaking.Bin2dBackPacking;
 import java.util.Scanner;
 
 import static backpaking.Bin2dBackPacking.calculateMaxObjects;
+import static backpaking.Bin2dBackPacking.printSpace;
 
 public class Main {
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
 
         // Solicitar dimensiones del techo
@@ -17,11 +17,17 @@ public class Main {
         int areaHeight = scanner.nextInt();
 
         // Dimensiones de un panel solar
-        Bin2dBackPacking.ObjectDimensions panelSolar = new Bin2dBackPacking.ObjectDimensions(1, 2);
+        Bin2dBackPacking.ObjectDimensions panelSolar = new Bin2dBackPacking.ObjectDimensions(1, 1, 2);
+
+        // Crear una matriz para representar el espacio
+        int[][] space = new int[areaHeight][areaWidth];
 
         // Calcular el número máximo de paneles solares que caben
-        int maxPanels = calculateMaxObjects(areaWidth, areaHeight, panelSolar);
+        int maxPanels = calculateMaxObjects(areaWidth, areaHeight, panelSolar, space);
         System.out.println("El número máximo de paneles solares que caben en el techo es: " + maxPanels);
+
+        // Imprimir la representación gráfica
+        printSpace(space);
 
         scanner.close();
     }
